@@ -1,9 +1,9 @@
+import java.util.ArrayList;
 
 public class Polinomio {
 
 	private int grado;
-	private int[] constantes;
-	
+	private ArrayList<Nodo> nodos;	
 	
 	
 	public int getGrado() {
@@ -13,36 +13,44 @@ public class Polinomio {
 	public void setGrado(int grado) {
 		this.grado = grado;
 	}
+	
+	
 
-	public int[] getConstantes() {
-		return constantes;
+	public ArrayList<Nodo> getNodos() {
+		return nodos;
 	}
 
-	public void setConstantes(int[] constantes) {
-		this.constantes = constantes;
+	public void setNodos(ArrayList<Nodo> nodos) {
+		this.nodos = nodos;
 	}
 
 	public Polinomio () {
+		this.nodos = new ArrayList<Nodo>();
 		this.grado = 0;
 	}
 	
-	public Polinomio (int[] cons) {
-		this.grado = cons.length -1;
-		this.constantes = cons;
+	public Polinomio (int g) {
+		this.nodos = new ArrayList<Nodo>();
+		this.grado = g;
 	}
 	
+	
+	public void addNodo(int grado, int co) {
+		if (co!=0) {
+			Nodo n = new Nodo(grado,co);
+			nodos.add(n);
+		}
+	}
+
 	public String toString() {
 		String s = "";
-		for(int i=this.constantes.length-1; i>=0; i--) {
-			int n = this.constantes[i];
-			String signo = "";
-			if (n < 0) { signo = "-"; }
-			if (n > 0 && i < this.constantes.length-1) { signo = "+"; }
-			if (i==0) {
-				s+= " " + signo + Math.abs(n);
-			} else if (n != 0) { 
-				s+= " " + signo + Math.abs(n) + "x^" + i;
-			}
+		for (Nodo n : nodos) {
+			String t = " ";
+			if (n.getEx()<this.grado && n.getCo()>0) { t= " +"; }
+			
+			if (n.getCo()==0) { s+= ""; }
+			else if (n.getEx()==0) { s+= t + n.getCo(); }
+			else { s+= t + n.getCo()+"x^"+n.getEx(); }
 		}
 		
 		return s;
