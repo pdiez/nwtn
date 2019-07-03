@@ -48,16 +48,16 @@ public class Newton {
 			actualizaPantalla();
 			y=x;
 		}
-		System.out.println("SOLUCIÓN: " + x);
+		System.out.println("Raíz encontrada: " + x + " (~"+ Math.round(x*100.0)/100.0 + ")");
 		
 	}
 
 
 
 	private boolean comparar(double x, double y, int p) {
-		int pre = 1 * (int)Math.pow(10,p);
-		int x1 = (int)x*pre;
-		int y1 = (int)y*pre;	
+		float pre = (float) Math.pow(10,p);
+		float x1 = (float)Math.abs(x*pre);
+		float y1 = (float)Math.abs(y*pre);	
 		
 		return x1==y1;
 	}

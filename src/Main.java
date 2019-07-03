@@ -16,7 +16,7 @@ public class Main {
 		while (i>=0) {
 			String t = "x^"+i;
 			System.out.println(" * Escriba el coeficiente para " +t);
-			int n = sc.nextInt();
+			double n = sc.nextDouble();
 			p.addNodo(i, n);
 			i--;
 		}
@@ -29,13 +29,24 @@ public class Main {
 		int it = sc.nextInt();
 		System.out.println(" * Indique la semilla inicial: ");
 		double se = sc.nextDouble();
-		System.out.println(" * Indique la precisión (0 para usar por defecto 6 decimales): ");
+		System.out.println(" * Indique la potencia de 10 que se usará de precisión (0 para usar por defecto 6): ");
 		int pre = sc.nextInt();
-		
+		sc.nextLine(); 		
 		Newton newton = new Newton(p,it,se,pre);
 		newton.empezar();
-		
-	
+		while (!exit) {
+			System.out.println(" * Desea utilizar otra semilla? (S/N): ");
+			String cont = sc.nextLine();
+			exit = !cont.toUpperCase().equals("S");
+			if(!exit) {
+				System.out.println(" * Indique la semilla: ");
+				double nse = sc.nextDouble();
+				Newton n2 = new Newton(p,it,nse,pre);
+				n2.empezar();
+				sc.nextLine(); 		
+			}
+		}
+		System.out.println(" *** ¡Hasta la próxima! *** ");
 	}
 
 

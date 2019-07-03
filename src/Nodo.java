@@ -1,14 +1,14 @@
 
 public class Nodo {
 	
-	private int co;
+	private double co;
 	private int ex;
 
-	public int getCo() {
+	public double getCo() {
 		return co;
 	}
 
-	public void setCo(int co) {
+	public void setCo(double co) {
 		this.co = co;
 	}
 
@@ -20,7 +20,7 @@ public class Nodo {
 		this.ex = ex;
 	}
 
-	public Nodo(int i, int d) {
+	public Nodo(int i, double d) {
 		this.ex = i;
 		this.co = d;
 	}

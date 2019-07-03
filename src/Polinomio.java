@@ -35,7 +35,7 @@ public class Polinomio {
 	}
 	
 	
-	public void addNodo(int grado, int co) {
+	public void addNodo(int grado, double co) {
 		if (co!=0) {
 			Nodo n = new Nodo(grado,co);
 			nodos.add(n);
